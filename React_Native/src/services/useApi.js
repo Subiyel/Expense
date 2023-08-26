@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const Api = async (url, param = null, type = "GET", token = null) => {
+const useApi = async (url, param = null, type = "GET", token = null) => {
     
   try {
 
@@ -27,4 +27,4 @@ const Api = async (url, param = null, type = "GET", token = null) => {
   }
 
 
-export default Api;
+export default useApi;

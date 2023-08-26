@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Api from '../../services/Api';
+import useApi from '../../services/useApi';
 import { ApiConstants } from '../../services/ApiConstants';
 
 export function useDetail() {

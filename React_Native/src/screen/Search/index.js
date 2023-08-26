@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, TextInput, SafeAreaView, FlatList, Image } from 'react-native';
 import { MyHeader, MovieItem, MyText } from '../../components';
-import Api from '../../services/Api';
 import { ApiConstants } from '../../services/ApiConstants';
 import { useSearch } from './useSearch';
 import {styles} from './styles';

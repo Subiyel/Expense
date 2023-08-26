@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { View, Text, SafeAreaView, FlatList } from 'react-native';
 import { MyHeader, MovieItem } from '../../components';
-import Api from '../../services/Api';
 import { ApiConstants } from '../../services/ApiConstants';
 import { useWatch } from './useWatch';
 import { styles } from './styles';

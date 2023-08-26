@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import BottomTabs from './BottomTabs';
-
+import Login from "../screen/Login";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -20,7 +20,7 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator  screenOptions={{ headerShown : false }}>
         
-        
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
         
       </Stack.Navigator>

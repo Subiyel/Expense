@@ -7,9 +7,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
+import Home from "../screen/Home";
 import Watch from "../screen/Watch";
 import Search from "../screen/Search";
 import Detail from "../screen/Detail";
+
+
 
 
 import { MyText } from "../components";
@@ -48,7 +51,7 @@ function DiscoverStack() {
  
     return (
       <HomeScreenStack.Navigator screenOptions={{ headerShown: false }}>
-        <HomeScreenStack.Screen name="Home1" component={Dashboard} />
+        <HomeScreenStack.Screen name="Home1" component={Home} />
       </HomeScreenStack.Navigator>
 );
 }
