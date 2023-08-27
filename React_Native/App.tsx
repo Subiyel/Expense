@@ -42,13 +42,13 @@ function App(): JSX.Element {
   };
 
   return (
-    // <SafeAreaView style={backgroundStyle}>
-      // <StatusBar
-      //   barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-      //   backgroundColor={backgroundStyle.backgroundColor}
-      // />
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
         <AppNavigator />
-    // </SafeAreaView>
+    </SafeAreaView>
   );
 }
 

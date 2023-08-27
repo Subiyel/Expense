@@ -17,9 +17,9 @@ app.use(function(req, res, next) {
   if (req.method === "OPTIONS") {
     return res.send(200);
   } else {
-    if (process.env.NODE_ENV != "test") {
+    // if (process.env.NODE_ENV != "test") {
       console.log(req.originalUrl);
-    }
+    // }
     return next();
   }
 });

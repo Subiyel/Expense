@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
 
   logo: {
-    marginTop: Platform.OS == "android" ? 30 : 100,
+    marginTop: 30,
     width: 300,
     height: 300,
     alignSelf: 'center',
@@ -88,6 +88,12 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: 20,
     top: 18
+  },
+
+  forgotPassView: {
+    paddingTop: 10,
+    paddingRight: 10,
+    alignSelf: 'flex-end'
   }
 
 

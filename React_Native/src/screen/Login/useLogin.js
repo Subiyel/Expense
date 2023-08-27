@@ -4,22 +4,51 @@ import { ApiConstants } from '../../services/ApiConstants';
 
 export function useLogin() {
 
-    const [data, setData] = useState([]);
-    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState({});
+    const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchMovies()
+    validateInput()
   }, [])
 
-  const fetchMovies = async () => { console.log("useLogin render")
-    setLoading(true)
-    let response = await useApi(ApiConstants.BASE_URL + ApiConstants.UPCOMING + "?api_key=" + process.env.API_KEY)
-    setLoading(false)
-    if (response && response.results && response.results.length > 0) {
-        setData(response.results)
+  const validateInput = (email, password) => {
+    if (email == "") {
+      alert("Email is Empty")
+      return false
+    } else if (password == "") {
+      alert("Password is Empty")
+      return false
+    } else {
+      return true
     }
   }
 
-  return { data, error, isLoading }
+  const loginUser = async (email, password) => {
+    setLoading(true)
+    let data = {
+      email,
+      password
+    }
+    let response = await useApi(ApiConstants.BASE_URL + ApiConstants.LOGIN, data, "POST")
+    setLoading(false)
+    if (response && response.success) {
+        // setData(response.)
+        console.log("jwt: ", response.token)
+    } else if (response.auth) {
+      alert(response.auth)
+    } else if (response.error) {
+      alert(response.error)
+    } else {
+      alert("Could not connect to server")
+    }
+  }
+
+  return { 
+    data, 
+    error, 
+    isLoading, 
+    validateInput, 
+    loginUser 
+  }
 }

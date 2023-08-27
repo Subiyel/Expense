@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { MyButton, MyText } from '../../components';
 import { useLogin } from './useLogin';
 import { styles } from "./styles";
@@ -12,21 +12,29 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [passVisible, setPassVisible] = useState(false);
   const {t, i18n} = useTranslation();
+  const { 
+          data, 
+          error, 
+          isLoading, 
+          validateInput,
+          loginUser
+        } = useLogin(email, password)
 
 
   useEffect(()=> {
-    loginUser()
   },[])
 
-
-  const loginUser = async () => {
-    
-  }
   
-
-  const { data, error, isLoading } = useLogin()
   console.log("isLoading: ", isLoading)
   console.log("data: ", data)
+
+  const onSubmit = async () => {
+    if (validateInput(email, password)){
+      await loginUser(email, password)
+    }
+  }
+
+  
 
 
 
@@ -41,7 +49,7 @@ const Login = ({ navigation }) => {
 
 
           <Image source={ require('../../../assets/imgs/E1.png') } style={styles.logo} resizeMode={"contain"} />
-          <MyText style={styles.title}>{ t('AppName') }</MyText>
+          <MyText style={styles.title}>{ t('appName') }</MyText>
           <MyText style={styles.loginLabel}>{t('login')}</MyText>
                  
             <View style={styles.row1}>
@@ -82,6 +90,10 @@ const Login = ({ navigation }) => {
                     />
                   </TouchableHighlight> */}
                 </View>
+
+                <TouchableOpacity style={styles.forgotPassView}>
+                  <MyText>{ t('forgotPassword') }</MyText>
+                </TouchableOpacity>
               </View>
             </View>
 
@@ -90,7 +102,7 @@ const Login = ({ navigation }) => {
               labelStyle={{ fontSize: 18 }} 
               isLoading={isLoading} 
               buttonStyle={{ paddingVertical: 20, width: '40%',  borderRadius: 30, marginTop: 30, alignSelf: 'center' }} 
-              onPress={()=> validateForm()} 
+              onPress={()=> onSubmit()} 
               label={t('login')} 
               
               />

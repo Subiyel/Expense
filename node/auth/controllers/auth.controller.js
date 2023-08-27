@@ -48,7 +48,7 @@ exports.refresh_token = (req, res) => {
     User.findOne({ _id: userId }).then(user => {
       // Check if user exists
       if (!user) {
-        return res.status(404).json({ auth: "Email not found" });
+        return res.status(200).json({ auth: "Email not found" });
       }
       const payload = {
         id: user.id,
@@ -90,7 +90,7 @@ exports.registerUser = (req, res) => {
 exports.loginUser = (req, res) => {
   // Form validation
   const { errors, isValid } = validateLoginInput(req.body);
-
+  console.log("Login user ", isValid)
   // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
@@ -105,7 +105,7 @@ exports.loginUser = (req, res) => {
     .then(user => {
       // Check if user exists
       if (!user) {
-        return res.status(404).json({ auth: "Email not found" });
+        return res.status(200).json({ auth: "Email not found" });
       }
 
       // Check password
@@ -132,7 +132,7 @@ exports.loginUser = (req, res) => {
               return res.status(400).send({ error: "Error", err: err });
             });
         } else {
-          return res.status(400).send({ error: "Password incorrect" });
+          return res.status(200).send({ error: "Password incorrect" });
         }
       });
     });
