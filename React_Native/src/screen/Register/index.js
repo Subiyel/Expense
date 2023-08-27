@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { MyButton, MyText } from '../../components';
-import { useLogin } from './useLogin';
-import { styles } from "./styles";
+import { useLogin } from './useRegister';
 import { colors } from '../../util/colors';
 import {useTranslation} from 'react-i18next';
+import { styles } from "./styles";
 
-const Login = ({ navigation }) => {
-
+const Register = ({ navigation }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passVisible, setPassVisible] = useState(false);
   const {t, i18n} = useTranslation();
   const { 
@@ -41,16 +42,33 @@ const Login = ({ navigation }) => {
   return (
     <KeyboardAvoidingView keyboardVerticalOffset={Platform.select({ ios: 30, android: 50 })} behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
 
-    {/* <LinearGradient colors={['#65ad82', '#579e93', '#4283ab']} style={styles.linearGradient}> */}
       <ScrollView>
         <View style={styles.containerWrapper}>
           <View style={styles.box}>
       
 
-
+          <View style={styles.row}>
           <Image source={ require('../../../assets/imgs/E1.png') } style={styles.logo} resizeMode={"contain"} />
           <MyText style={styles.title}>{ t('appName') }</MyText>
-          <MyText style={styles.loginLabel}>{t('login')}</MyText>
+          </View>
+
+
+          <MyText style={styles.loginLabel}>{t('register')}</MyText>
+
+
+          <View style={styles.row1}>
+              <View style={styles.fullView}>
+                <TextInput
+                  placeholderTextColor={colors.gray}
+                  value={name}
+                  placeholder={ t('name') }
+                  onChangeText={(text) => setName(text)}
+                  autoCapitalize="none"
+                  style={[styles.tfInput, {textAlign :  I18nManager.isRTL ? 'right' : 'left'}]}
+                />
+                <Image style={ styles.iconAbsolute } source={ require('../../../assets/imgs/icons/email.png') } />
+              </View>
+            </View>
                  
             <View style={styles.row1}>
               <View style={styles.fullView}>
@@ -91,9 +109,7 @@ const Login = ({ navigation }) => {
                   </TouchableHighlight> */}
                 </View>
 
-                <TouchableOpacity style={styles.forgotPassView}>
-                  <MyText>{ t('forgotPassword') }</MyText>
-                </TouchableOpacity>
+
               </View>
             </View>
 
@@ -103,15 +119,15 @@ const Login = ({ navigation }) => {
               isLoading={isLoading} 
               buttonStyle={{ paddingVertical: 20, width: '40%',  borderRadius: 30, marginTop: 30, alignSelf: 'center' }} 
               onPress={()=> onSubmit()} 
-              label={t('login')} 
+              label={t('register')} 
               
               />
 
           
             <View style={styles.signupRow}>
-              <MyText style={styles.newAccountLbl}>{ t('noAccount') }</MyText>
-              <TouchableOpacity onPress={()=> navigation.navigate('Register')}>
-              <MyText style={styles.signUpLbl}>{ t('signUp') }</MyText>
+              <MyText style={styles.newAccountLbl}>{ t('alreadyAccount') }</MyText>
+              <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
+              <MyText style={styles.signUpLbl}>{ t('login') }</MyText>
               </TouchableOpacity>
             </View>
 
@@ -120,9 +136,8 @@ const Login = ({ navigation }) => {
       </ScrollView>
 
 
-    {/* </LinearGradient> */}
   </KeyboardAvoidingView>
   )
 }
 
-export default Login
+export default Register

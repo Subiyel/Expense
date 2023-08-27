@@ -1,7 +1,12 @@
 {
     "login": "Login",
+    "register": "Register",
     "email": "Email",
+    "name": "Name",
     "password": "Password",
     "appName": "Expense Tracker",
-    "forgotPassword": "Forgot Password?"
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don’t have an account?",
+    "signUp": "Sign Up",
+    "alreadyAccount": "Already have an account?"
 }
