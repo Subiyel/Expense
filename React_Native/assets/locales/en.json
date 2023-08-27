@@ -8,5 +8,8 @@
     "forgotPassword": "Forgot Password?",
     "noAccount": "Don’t have an account?",
     "signUp": "Sign Up",
-    "alreadyAccount": "Already have an account?"
+    "alreadyAccount": "Already have an account?",
+    "confirmPassword": "Confirm Password",
+    "forgotTxt": "Please enter your registered email address",
+    "verify": "Verify"
 }

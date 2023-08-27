@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useApi from '../../services/useApi';
 import { ApiConstants } from '../../services/ApiConstants';
 
-export function useRegister() {
+export function useForgotPass() {
 
     const [data, setData] = useState({});
     const [isLoading, setLoading] = useState(false);
@@ -12,32 +12,18 @@ export function useRegister() {
     validateInput()
   }, [])
 
-  const validateInput = (name, email, password, confirmPassword) => {
+  const validateInput = (email) => {
     if (email == "") {
       alert("Email is Empty")
       return false
-    } else if (name == "") {
-      alert("Name is Empty")
-      return false
-    } else if (password == "") {
-      alert("Password is Empty")
-      return false
-    } else if (confirmPassword == "") {
-      alert("Password is Empty")
-      return false
-    } else {
+    }  else {
       return true
     }
   }
 
-  const registerUser = async (name, email, password, confirmPassword) => {
+  const verifyUser = async (email) => {
     setLoading(true)
-    let data = {
-      name,
-      email,
-      password,
-      password2: confirmPassword
-    }
+    let data = { email }
     let response = await useApi(ApiConstants.BASE_URL + ApiConstants.REGISTER, data, "POST")
     setLoading(false)
     if (response) {
@@ -59,6 +45,6 @@ export function useRegister() {
     error, 
     isLoading, 
     validateInput, 
-    registerUser 
+    verifyUser 
   }
 }

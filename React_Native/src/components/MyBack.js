@@ -11,7 +11,7 @@ export default function MyBack(props) {
         <Image style={styles.img} source={ require('../../assets/imgs/icons/back.png') } />
        
         <MyText {...props} style={[ styles.label , props.labelStyle ]}>
-            Watch
+            Back
         </MyText>
 
     </TouchableOpacity>
@@ -25,18 +25,16 @@ export default function MyBack(props) {
         height: 30,
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 15,
-        marginTop: 65
-        // justifyContent: 'space-between',
+        marginTop: 30
     },
     img: {
-        //  marginTop: 62, 
-         height: 30, 
-         width: 30 
+        tintColor: colors.text,
+        height: 30, 
+        width: 30 
     },
     label: {
         fontSize: 16, 
-        color: colors.white,
+        color: colors.text,
         marginLeft: 2
     }
   });

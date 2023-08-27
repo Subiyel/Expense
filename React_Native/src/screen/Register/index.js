@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { MyButton, MyText } from '../../components';
+import { MyButton, MyText, MyBack } from '../../components';
 import Icon from "react-native-vector-icons/Ionicons";
-import { useLogin } from './useRegister';
+import { useRegister } from './useRegister';
 import { colors } from '../../util/colors';
 import {useTranslation} from 'react-i18next';
 import { styles } from "./styles";
@@ -13,14 +13,15 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passVisible, setPassVisible] = useState(false);
+  const [passVisible2, setPassVisible2] = useState(false);
   const {t, i18n} = useTranslation();
   const { 
           data, 
           error, 
           isLoading, 
           validateInput,
-          loginUser
-        } = useLogin(email, password)
+          registerUser
+        } = useRegister(email, password)
 
 
   useEffect(()=> {
@@ -31,8 +32,8 @@ const Register = ({ navigation }) => {
   console.log("data: ", data)
 
   const onSubmit = async () => {
-    if (validateInput(email, password)){
-      await loginUser(email, password)
+    if (validateInput(name, email, password, confirmPassword)){
+      await registerUser(name, email, password, confirmPassword)
     }
   }
 
@@ -42,9 +43,10 @@ const Register = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView keyboardVerticalOffset={Platform.select({ ios: 30, android: 50 })} behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
-
+    
       <ScrollView>
         <View style={styles.containerWrapper}>
+        <MyBack {...navigation} />
           <View style={styles.box}>
       
 
@@ -104,6 +106,37 @@ const Register = ({ navigation }) => {
                   >
                     <Icon
                       name={passVisible ? "eye-off" : "eye"}
+                      size={18}
+                      color={colors.white}
+                    />
+                  </TouchableHighlight>
+                </View>
+
+
+              </View>
+            </View>
+
+
+
+            <View style={styles.row1}>
+              <View style={styles.fullView}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <TextInput
+                    placeholderTextColor={colors.gray}
+                    value={confirmPassword}
+                    secureTextEntry={!passVisible2}
+                    placeholder={ t('confirmPassword') }
+                    autoCapitalize="none"
+                    onChangeText={(text) => setConfirmPassword(text)}
+                    style={[styles.tfInput, {textAlign :  I18nManager.isRTL ? 'right' : 'left'}]}
+                  />
+                  <Image style={ styles.iconAbsolute } source={ require('../../../assets/imgs/icons/pass.png') } />
+                  <TouchableHighlight
+                    onPress={() => setPassVisible2(!passVisible2)}
+                    style={ styles.eyeIconRight}
+                  >
+                    <Icon
+                      name={passVisible2 ? "eye-off" : "eye"}
                       size={18}
                       color={colors.white}
                     />

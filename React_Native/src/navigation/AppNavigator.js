@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import BottomTabs from './BottomTabs';
 import Login from "../screen/Login";
 import Register from '../screen/Register';
+import ForgotPass from '../screen/FrogotPass';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -23,6 +24,7 @@ function AppNavigator() {
         
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ForgotPass" component={ForgotPass} />
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
         
       </Stack.Navigator>
