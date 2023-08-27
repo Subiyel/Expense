@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { MyButton, MyText, MyHeader, MyCard, MyTransaction } from '../../components';
 import { useHome } from './useHome';
+import { useIsFocused } from "@react-navigation/native";
 import { styles } from "./styles";
 import { colors } from '../../util/colors';
 import {useTranslation} from 'react-i18next';
+import "../../../assets/locales";
 
 const Home = ({ navigation }) => {
 
+  const isFocused = useIsFocused();
   const [email, setEmail] = useState("");
   const {t, i18n} = useTranslation();
   const { 
@@ -15,12 +18,19 @@ const Home = ({ navigation }) => {
           name,
           error,
           isLoading, 
-          validateInput,
+          isArabic,
         } = useHome()
 
 
-  useEffect(()=> {
-  },[])
+useEffect(() => {
+  if (isFocused) {
+    if (isArabic) {
+      i18n.changeLanguage('ar');
+    } else {
+      i18n.changeLanguage('en');
+    }
+  }
+}, [isFocused]);
 
   
   console.log("isLoading: ", isLoading)
@@ -40,7 +50,7 @@ const Home = ({ navigation }) => {
       <ScrollView>
         <View style={styles.container}>
          
-          <MyHeader name={name} />
+          <MyHeader name={name} onSettingsPress={()=> navigation.navigate('SettingsModel')} />
           <MyCard />
 
 

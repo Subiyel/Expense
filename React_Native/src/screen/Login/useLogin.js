@@ -10,6 +10,8 @@ export function useLogin({navigation}) {
 
     const [data, setData] = useState({});
     const [isLoading, setLoading] = useState(false);
+    const isArabic = useSelector(state => state.appReducer.isArabic)
+
     const [error, setError] = useState("");
     const dispatch = useDispatch()
     const showToast = () => {
@@ -44,7 +46,8 @@ export function useLogin({navigation}) {
     }
     let response = await useApi(ApiConstants.BASE_URL + ApiConstants.LOGIN, data, "POST")
     setLoading(false)
-    if (response && response.success) {
+    if (response){
+    if (response.success) {
 
       var decoded = jwt_decode(response.token);
       // console.log(decoded);
@@ -63,7 +66,8 @@ export function useLogin({navigation}) {
       alert(response.auth)
     } else if (response.error) {
       alert(response.error)
-    } else {
+    }
+   } else {
       alert("Could not connect to server")
     }
   }
@@ -73,6 +77,7 @@ export function useLogin({navigation}) {
     error, 
     isLoading, 
     validateInput, 
-    loginUser 
+    loginUser,
+    isArabic
   }
 }

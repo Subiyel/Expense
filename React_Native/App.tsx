@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import "./assets/locales";
+// import "./assets/locales";
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,

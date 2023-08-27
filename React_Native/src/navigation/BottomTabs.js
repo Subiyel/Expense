@@ -8,9 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 import Home from "../screen/Home";
-import Watch from "../screen/Watch";
-import Search from "../screen/Search";
-import Detail from "../screen/Detail";
+import Settings from "../screen/Settings";
 
 
 
@@ -24,7 +22,7 @@ const Tab = createBottomTabNavigator();
 function Dashboard() {
     return (
       <View style={{ flex: 1, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Dashboard Screen</Text>
+        <Text>Dummy Screen</Text>
       </View>
     );
   }
@@ -51,7 +49,13 @@ function DiscoverStack() {
  
     return (
       <HomeScreenStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeScreenStack.Group>
         <HomeScreenStack.Screen name="Home1" component={Home} />
+      </HomeScreenStack.Group>
+
+      <HomeScreenStack.Group  screenOptions={{ presentation: 'modal' }} >
+        <HomeScreenStack.Screen name="SettingsModel" component={Settings}/>
+      </HomeScreenStack.Group>
       </HomeScreenStack.Navigator>
 );
 }
@@ -60,12 +64,7 @@ function WatchStack() {
   return (
     <HomeScreenStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeScreenStack.Group>
-      <HomeScreenStack.Screen name="Watch" component={Watch} />
-      <HomeScreenStack.Screen name="Detail" component={Detail} />
-      </HomeScreenStack.Group>
-
-      <HomeScreenStack.Group  screenOptions={{ presentation: 'modal' }} >
-      <HomeScreenStack.Screen name="SearchModel" component={Search}/>
+      <HomeScreenStack.Screen name="Watch" component={Dashboard} />
       </HomeScreenStack.Group>
     </HomeScreenStack.Navigator>
   );
@@ -74,7 +73,7 @@ function WatchStack() {
 function MediaStack() {
   return (
     <HomeScreenStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeScreenStack.Screen name="ChatHistory" component={Media} />
+      <HomeScreenStack.Screen name="ChatHistory" component={Dashboard} />
     </HomeScreenStack.Navigator>
   );
 }
@@ -82,7 +81,7 @@ function MediaStack() {
 function MoreStack() {
     return (
       <HomeScreenStack.Navigator screenOptions={{ headerShown: false }}>
-        <HomeScreenStack.Screen name="More" component={More} />
+        <HomeScreenStack.Screen name="More" component={Media} />
       </HomeScreenStack.Navigator>
     );
   }
@@ -99,7 +98,7 @@ const TabArr = [
     activeTintColor: colors.tabBarActive,
   },
   {
-    route: "Watch",
+    route: "WatchTab",
     label: "Watch",
     component: WatchStack,
     activeImg: require("../../assets/imgs/icons/plus.png"),
@@ -108,7 +107,7 @@ const TabArr = [
     activeTintColor: colors.tabBarActive,
   },
   {
-    route: "More",
+    route: "MoreTab",
     label: "More",
     component: MoreStack,
     activeImg: require("../../assets/imgs/icons/chart.png"),
@@ -184,11 +183,11 @@ const TabButton = (props) => {
     if (focused) {
       viewRef.current.animate({
         0: { scale: 1, rotate: "0deg" },
-        1: { scale: 1.5, rotate: "360deg" },
+        1: { scale: 1.2, rotate: "360deg" },
       });
     } else {
       viewRef.current.animate({
-        0: { scale: 1.5, rotate: "360deg" },
+        0: { scale: 1.2, rotate: "360deg" },
         1: { scale: 1, rotate: "0deg" },
       });
     }

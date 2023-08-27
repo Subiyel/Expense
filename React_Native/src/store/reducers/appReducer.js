@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   email: "",
   id: "",
   jwtToken: "",
-  refreshToken: ""
+  refreshToken: "",
+  isArabic: false
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +26,14 @@ const appReducer = (state = INITIAL_STATE, action) => {
         refreshToken: action.data.refreshToken
         };
     }
+
+
+    case types.SET_ARABIC: {
+      return {
+          ...state,
+          isArabic: action.data
+          };
+      }
 
         
 

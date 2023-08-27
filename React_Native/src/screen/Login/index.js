@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { MyButton, MyText } from '../../components';
+import { useIsFocused } from "@react-navigation/native";
 import { useLogin } from './useLogin';
 import { styles } from "./styles";
 import { colors } from '../../util/colors';
@@ -9,6 +10,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 const Login = ({ navigation }) => {
 
+  const isFocused = useIsFocused();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passVisible, setPassVisible] = useState(false);
@@ -18,13 +20,20 @@ const Login = ({ navigation }) => {
           error, 
           isLoading, 
           validateInput,
-          loginUser
+          loginUser,
+          isArabic
         } = useLogin({navigation})
   
 
-  useEffect(()=> {
-    
-  },[])
+  useEffect(() => {
+    if (isFocused) {
+      if (isArabic) {
+        i18n.changeLanguage('ar');
+      } else {
+        i18n.changeLanguage('en');
+      }
+    }
+  }, [isFocused]);
 
 
 

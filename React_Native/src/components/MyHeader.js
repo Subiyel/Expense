@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, TouchableOpacity } from "react-native"
 import { colors } from '../util/colors'
 import { MyText } from '.'
 
-const MyHeader = ({name}) => {
+const MyHeader = ({name, onSettingsPress}) => {
   return (
     <View style={styles.container}>
     <View style={styles.row}>
@@ -15,7 +15,7 @@ const MyHeader = ({name}) => {
         </View>
         </View>
 
-        <TouchableOpacity onPress={()=> props.onSettingsPress() } style={styles.settingsTouch}>
+        <TouchableOpacity onPress={()=> onSettingsPress() } style={styles.settingsTouch}>
             <Image style={styles.settingsIcon} source={ require('../../assets/imgs/icons/settings.png') } />
         </TouchableOpacity>
 
