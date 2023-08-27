@@ -9,7 +9,7 @@ export function useHome() {
     const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchHomeData()
+    // fetchHomeData()
   }, [])
 
 

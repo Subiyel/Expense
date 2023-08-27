@@ -102,16 +102,7 @@ const TabArr = [
     route: "Watch",
     label: "Watch",
     component: WatchStack,
-    activeImg: require("../../assets/imgs/icons/watch.png"),
-    activeIcon: "home",
-    inActiveTintColor: colors.tabBarInActive,
-    activeTintColor: colors.tabBarActive,
-  },
-  {
-    route: "Media",
-    label: "Media",
-    component: MediaStack,
-    activeImg: require("../../assets/imgs/icons/media.png"),
+    activeImg: require("../../assets/imgs/icons/plus.png"),
     activeIcon: "home",
     inActiveTintColor: colors.tabBarInActive,
     activeTintColor: colors.tabBarActive,
@@ -120,7 +111,7 @@ const TabArr = [
     route: "More",
     label: "More",
     component: MoreStack,
-    activeImg: require("../../assets/imgs/icons/more.png"),
+    activeImg: require("../../assets/imgs/icons/chart.png"),
     activeIcon: "home",
     inActiveTintColor: colors.tabBarInActive,
     activeTintColor: colors.tabBarActive,
@@ -130,16 +121,17 @@ const TabArr = [
 function BottomTabs() {
 
   const customTabStyle = {
-    height: 100,
+    height: 80,
     position: "absolute",
     bottom: 0,
     right: 0,
     left: 0,
-    borderRadius: 30,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
     paddingHorizontal: 10,
-    paddingBottom: 40,
+    paddingBottom: 10,
     paddingTop: 6,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.bottombarBG,
   }
 
   return (
@@ -215,14 +207,14 @@ const TabButton = (props) => {
           style={{
             height: 25,
             width: 25,
-            tintColor: focused ? colors.tabBarActive : colors.tabBarInActive,
+            tintColor: focused ? colors.text : colors.tabBarInActive,
           }}
           resizeMode={"contain"}
         />
       </Animatable.View>
-      <MyText style={{
+      {/* <MyText style={{
           color: focused ? colors.tabBarActive : colors.tabBarInActive,
-      }}>{item.label}</MyText>
+      }}>{item.label}</MyText> */}
     </TouchableOpacity>
   );
 };

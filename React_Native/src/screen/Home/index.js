@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { MyButton, MyText } from '../../components';
+import { MyButton, MyText, MyHeader, MyCard, MyTransaction } from '../../components';
 import { useHome } from './useHome';
 import { styles } from "./styles";
 import { colors } from '../../util/colors';
@@ -37,15 +37,34 @@ const Home = ({ navigation }) => {
   return (
     <KeyboardAvoidingView keyboardVerticalOffset={Platform.select({ ios: 30, android: 50 })} behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
 
-    {/* <LinearGradient colors={['#65ad82', '#579e93', '#4283ab']} style={styles.linearGradient}> */}
       <ScrollView>
         <View style={styles.container}>
          
+          <MyHeader />
+          <MyCard />
+
+
+          <View style={styles.row}>
+            <MyText style={styles.transactionsLbl}>{ t('transactions') }</MyText>
+            <TouchableOpacity>
+              <MyText style={styles.viewAllLbl}>{ t('viewAll') }</MyText>
+            </TouchableOpacity>
+          </View>
+
+
+          <MyTransaction 
+            item={{
+              "name": "Food",
+              "amount": "$12.00",
+              "time": "12 mins"
+              }} 
+
+            />
+
         </View>
       </ScrollView>
 
 
-    {/* </LinearGradient> */}
   </KeyboardAvoidingView>
   )
 }

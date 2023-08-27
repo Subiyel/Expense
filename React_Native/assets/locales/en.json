@@ -12,5 +12,7 @@
     "confirmPassword": "Confirm Password",
     "forgotTxt": "Please enter your registered email address",
     "verify": "Verify",
-    "verifyOtpTxt": "Please enter 5 digits OTP sent to your email address"
+    "verifyOtpTxt": "Please enter 5 digits OTP sent to your email address",
+    "transactions": "Transactions",
+    "viewAll": "View All"
 }
