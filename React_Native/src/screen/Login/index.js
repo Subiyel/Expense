@@ -4,12 +4,15 @@ import { MyButton, MyText } from '../../components';
 import { useLogin } from './useLogin';
 import { styles } from "./styles";
 import { colors } from '../../util/colors';
+import {useTranslation} from 'react-i18next';
 
 const Login = ({ navigation }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passVisible, setPassVisible] = useState(false);
+  const {t, i18n} = useTranslation();
+
 
   useEffect(()=> {
     loginUser()
@@ -38,15 +41,15 @@ const Login = ({ navigation }) => {
 
 
           <Image source={ require('../../../assets/imgs/E1.png') } style={styles.logo} resizeMode={"contain"} />
-          <MyText style={styles.title}>Expense Tracker</MyText>
-          <MyText style={styles.loginLabel}>Login</MyText>
+          <MyText style={styles.title}>{ t('AppName') }</MyText>
+          <MyText style={styles.loginLabel}>{t('login')}</MyText>
                  
             <View style={styles.row1}>
               <View style={styles.fullView}>
                 <TextInput
                   placeholderTextColor={colors.gray}
                   value={email}
-                  placeholder={ "t('label.email')" }
+                  placeholder={ t('email') }
                   onChangeText={(text) => setEmail(text)}
                   autoCapitalize="none"
                   style={[styles.tfInput, {textAlign :  I18nManager.isRTL ? 'right' : 'left'}]}
@@ -62,7 +65,7 @@ const Login = ({ navigation }) => {
                     placeholderTextColor={colors.gray}
                     value={password}
                     secureTextEntry={!passVisible}
-                    placeholder={ "t('label.password')" }
+                    placeholder={ t('password') }
                     autoCapitalize="none"
                     onChangeText={(text) => setPassword(text)}
                     style={[styles.tfInput, {textAlign :  I18nManager.isRTL ? 'right' : 'left'}]}
@@ -83,7 +86,14 @@ const Login = ({ navigation }) => {
             </View>
 
 
-            <MyButton labelStyle={{ fontSize: 18 }} isLoading={isLoading} buttonStyle={{ paddingVertical: 20, width: '40%',  borderRadius: 30, marginTop: 30, alignSelf: 'center' }} onPress={()=> validateForm()} label={"t('label.login')"} />
+            <MyButton 
+              labelStyle={{ fontSize: 18 }} 
+              isLoading={isLoading} 
+              buttonStyle={{ paddingVertical: 20, width: '40%',  borderRadius: 30, marginTop: 30, alignSelf: 'center' }} 
+              onPress={()=> validateForm()} 
+              label={t('login')} 
+              
+              />
 
           
 

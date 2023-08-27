@@ -25,6 +25,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from "./src/navigation/AppNavigator";
+import "./assets/locales";
 
 type SectionProps = PropsWithChildren<{
   title: string;
