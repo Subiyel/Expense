@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, ScrollView, Image, I18nManager, Platform, KeyboardAvoidingView, TouchableOpacity, TouchableHighlight } from 'react-native';
 import { MyButton, MyText } from '../../components';
+import Icon from "react-native-vector-icons/Ionicons";
 import { useLogin } from './useRegister';
 import { colors } from '../../util/colors';
 import {useTranslation} from 'react-i18next';
@@ -97,16 +98,16 @@ const Register = ({ navigation }) => {
                     style={[styles.tfInput, {textAlign :  I18nManager.isRTL ? 'right' : 'left'}]}
                   />
                   <Image style={ styles.iconAbsolute } source={ require('../../../assets/imgs/icons/pass.png') } />
-                  {/* <TouchableHighlight
-                    onPress={() => revealPassword()}
+                  <TouchableHighlight
+                    onPress={() => setPassVisible(!passVisible)}
                     style={ styles.eyeIconRight}
                   >
                     <Icon
                       name={passVisible ? "eye-off" : "eye"}
                       size={18}
-                      color={colors.gray}
+                      color={colors.white}
                     />
-                  </TouchableHighlight> */}
+                  </TouchableHighlight>
                 </View>
 
 
