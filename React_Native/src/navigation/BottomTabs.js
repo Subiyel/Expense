@@ -179,7 +179,7 @@ const TabButton = (props) => {
   const viewRef = useRef(null);
   const { item, onPress, accessibilityState } = props;
   const focused = accessibilityState.selected;
-  console.log("TAB props: ", props)
+  // console.log("TAB props: ", props)
   useEffect(() => {
     if (focused) {
       viewRef.current.animate({

@@ -5,15 +5,15 @@ import { useHome } from './useHome';
 import { styles } from "./styles";
 import { colors } from '../../util/colors';
 import {useTranslation} from 'react-i18next';
-import Icon from "react-native-vector-icons/Ionicons";
 
 const Home = ({ navigation }) => {
 
   const [email, setEmail] = useState("");
   const {t, i18n} = useTranslation();
   const { 
-          data, 
-          error, 
+          data,
+          name,
+          error,
           isLoading, 
           validateInput,
         } = useHome()
@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
       <ScrollView>
         <View style={styles.container}>
          
-          <MyHeader />
+          <MyHeader name={name} />
           <MyCard />
 
 

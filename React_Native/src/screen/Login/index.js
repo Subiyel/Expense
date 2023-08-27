@@ -19,15 +19,14 @@ const Login = ({ navigation }) => {
           isLoading, 
           validateInput,
           loginUser
-        } = useLogin(navigation)
-
+        } = useLogin({navigation})
+  
 
   useEffect(()=> {
+    
   },[])
 
-  
-  console.log("isLoading: ", isLoading)
-  console.log("data: ", data)
+
 
   const onSubmit = async () => {
     if (validateInput(email, password)){
@@ -42,7 +41,6 @@ const Login = ({ navigation }) => {
   return (
     <KeyboardAvoidingView keyboardVerticalOffset={Platform.select({ ios: 30, android: 50 })} behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container} >
 
-    {/* <LinearGradient colors={['#65ad82', '#579e93', '#4283ab']} style={styles.linearGradient}> */}
       <ScrollView>
         <View style={styles.containerWrapper}>
           <View style={styles.box}>
@@ -121,7 +119,6 @@ const Login = ({ navigation }) => {
       </ScrollView>
 
 
-    {/* </LinearGradient> */}
   </KeyboardAvoidingView>
   )
 }

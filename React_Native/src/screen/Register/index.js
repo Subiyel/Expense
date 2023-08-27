@@ -21,7 +21,7 @@ const Register = ({ navigation }) => {
           isLoading, 
           validateInput,
           registerUser
-        } = useRegister(email, password)
+        } = useRegister({navigation})
 
 
   useEffect(()=> {

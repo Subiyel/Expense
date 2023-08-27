@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import useApi from '../../services/useApi';
 import { ApiConstants } from '../../services/ApiConstants';
+import Toast from 'react-native-toast-message';
 
-export function useRegister() {
+export function useRegister({navigation}) {
 
     const [data, setData] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
+    const showToast = () => {
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: 'Registration Successfull'
+      });
+    }
   useEffect(() => {
     validateInput()
   }, [])
@@ -41,9 +48,9 @@ export function useRegister() {
     let response = await useApi(ApiConstants.BASE_URL + ApiConstants.REGISTER, data, "POST")
     setLoading(false)
     if (response) {
-      if (response.success){
-        // setData(response.)
-        // console.log("jwt: ", response.token)
+      if (response._id){
+        showToast()
+        navigation.goBack()
       } else if (response.auth) {
         alert(response.auth)
       } else if (response.error) {

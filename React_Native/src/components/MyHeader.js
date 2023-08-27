@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, TouchableOpacity } from "react-native"
 import { colors } from '../util/colors'
 import { MyText } from '.'
 
-const MyHeader = (props) => {
+const MyHeader = ({name}) => {
   return (
     <View style={styles.container}>
     <View style={styles.row}>
@@ -11,7 +11,7 @@ const MyHeader = (props) => {
         <Image style={styles.personIcon} source={ require('../../assets/imgs/person.webp') } resizeMode={'contain'} />
         <View style={styles.labelView}>
             <MyText style={styles.welcome}>Welcome!</MyText>
-            <MyText style={styles.title}>John Doe</MyText>
+            <MyText style={styles.title}>{name}</MyText>
         </View>
         </View>
 
