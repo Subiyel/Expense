@@ -3,9 +3,15 @@ import { colors } from '../../util/colors'
 
 export const styles = StyleSheet.create({
 
-    container: {
-        flex: 1,
-        backgroundColor: colors.lime
-    }
+    
+  container: {
+    flex: 1,
+    backgroundColor: colors.lime,
+  },
+
+  containerWrapper: {
+    marginHorizontal: 25,
+  },
+
 
 })

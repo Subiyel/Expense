@@ -2,29 +2,19 @@ import { useState, useEffect } from 'react';
 import useApi from '../../services/useApi';
 import { ApiConstants } from '../../services/ApiConstants';
 
-export function useLogin(navigation) {
+export function useHome() {
 
     const [data, setData] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
   useEffect(() => {
-    validateInput()
+    fetchHomeData()
   }, [])
 
-  const validateInput = (email, password) => {
-    if (email == "") {
-      alert("Email is Empty")
-      return false
-    } else if (password == "") {
-      alert("Password is Empty")
-      return false
-    } else {
-      return true
-    }
-  }
 
-  const loginUser = async (email, password) => {
+
+  const fetchHomeData = async (email, password) => {
     setLoading(true)
     let data = {
       email,
@@ -33,9 +23,8 @@ export function useLogin(navigation) {
     let response = await useApi(ApiConstants.BASE_URL + ApiConstants.LOGIN, data, "POST")
     setLoading(false)
     if (response && response.success) {
-        // setData(response.)
+        setData(response.data)
         console.log("jwt: ", response.token)
-        navigation.navigate("BottomTabs")
     } else if (response.auth) {
       alert(response.auth)
     } else if (response.error) {
@@ -49,7 +38,5 @@ export function useLogin(navigation) {
     data, 
     error, 
     isLoading, 
-    validateInput, 
-    loginUser 
   }
 }

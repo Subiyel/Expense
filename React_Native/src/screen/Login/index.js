@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
           isLoading, 
           validateInput,
           loginUser
-        } = useLogin(email, password)
+        } = useLogin(navigation)
 
 
   useEffect(()=> {
