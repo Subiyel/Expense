@@ -94,7 +94,26 @@ export const styles = StyleSheet.create({
     paddingTop: 10,
     paddingRight: 10,
     alignSelf: 'flex-end'
-  }
+  },
 
+  signupRow: { 
+    flexDirection:'row', 
+    alignItems:'center', 
+    alignSelf:'center',
+    marginTop: 30,
+  },
+
+  newAccountLbl: {
+    color: colors.text,
+    fontSize: 16,
+    textAlign: 'center'
+  },
+
+  signUpLbl: {
+    color: colors.text,
+    fontSize: 16,
+    marginLeft: 8,
+    fontWeight: 'bold'
+  }
 
 })

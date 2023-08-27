@@ -108,6 +108,12 @@ const Login = ({ navigation }) => {
               />
 
           
+            <View style={styles.signupRow}>
+              <MyText style={styles.newAccountLbl}>Don’t have an account?</MyText>
+              <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
+              <MyText style={styles.signUpLbl}>Sign Up</MyText>
+              </TouchableOpacity>
+            </View>
 
           </View>
         </View>

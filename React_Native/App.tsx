@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import "./assets/locales";
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,7 +26,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import AppNavigator from "./src/navigation/AppNavigator";
-import "./assets/locales";
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore, persistReducer } from 'redux-persist'
+import store from "./src/store/configureStore";
+
+
+let persistor = persistStore(store)
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -43,11 +49,10 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-        <AppNavigator />
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor} />
+      <PersistGate loading={null} persistor={persistor}>
+          <AppNavigator />
+      </PersistGate>
     </SafeAreaView>
   );
 }

@@ -8,7 +8,8 @@ export const colors = {
     textInput: '#b3b3b3',
 
 
-    text: '#202C43',
+
+    text: '#000000',
     text2: '#8F8F8F',
     tabBarActive: '#FFFFFF',
     tabBarInActive: '#827D88'
