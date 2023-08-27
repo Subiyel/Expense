@@ -160,7 +160,7 @@ const Register = ({ navigation }) => {
           
             <View style={styles.signupRow}>
               <MyText style={styles.newAccountLbl}>{ t('alreadyAccount') }</MyText>
-              <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
+              <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
               <MyText style={styles.signUpLbl}>{ t('login') }</MyText>
               </TouchableOpacity>
             </View>

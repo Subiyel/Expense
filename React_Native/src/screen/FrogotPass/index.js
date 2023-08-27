@@ -32,7 +32,7 @@ const ForgotPass = ({ navigation }) => {
   const onSubmit = async () => {
     if (validateInput(email)){
       // await verifyUser(email)
-      // navigation.navigate('')
+      navigation.navigate('VerifyOTP')
     }
   }
 

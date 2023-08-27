@@ -4,6 +4,8 @@ import BottomTabs from './BottomTabs';
 import Login from "../screen/Login";
 import Register from '../screen/Register';
 import ForgotPass from '../screen/FrogotPass';
+import VerifyOTP from '../screen/VerifyOTP';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -25,6 +27,8 @@ function AppNavigator() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="ForgotPass" component={ForgotPass} />
+        <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
+
         <Stack.Screen name="BottomTabs" component={BottomTabs} />
         
       </Stack.Navigator>
